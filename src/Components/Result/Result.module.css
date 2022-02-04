@@ -1,0 +1,9 @@
+.wrapper {
+	display: flex;
+	flex-direction: row;
+	margin-left: 100px;
+	color: #472631;
+}
+.result {
+	margin-left: 5px;
+}

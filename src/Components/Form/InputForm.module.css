@@ -1,0 +1,47 @@
+.input {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+.h2 {
+	text-align: center;
+	padding-top: 30px;
+	color: #472631;
+}
+.error {
+  font-size: 13px;
+	padding-top: 10px;
+	color: red;
+  margin-bottom: -25px;
+}
+.input input {
+	height: 30px;
+	width: 250px;
+	padding-left: 7px;
+}
+.input p {
+	margin: 30px 0px 10px 0px;
+	color: #472631;
+}
+.input button {
+	margin: 20px 0px;
+	width: 100px;
+	height: 40px;
+	background-color: white;
+
+  border: 1px solid #e2628e;
+	border-radius: 15px;
+	color: #e2628e;
+}
+.input button:hover {
+  background-color: #e2628e;
+	color: white;
+  transition: 0.2s;
+	cursor: pointer;
+}
+.input select {
+	width: 150px;
+	height: 30px;
+}
