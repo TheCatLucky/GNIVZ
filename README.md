@@ -6,5 +6,7 @@
 Запустить проект с помощью команды
 ### `npm start`
 
+Демо: 
+https://thecatlucky.github.io/GNIVZ/
 
 
