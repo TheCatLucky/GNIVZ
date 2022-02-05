@@ -1,9 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Dispatch, FC, SetStateAction } from "react";
+import { setCase, Values } from "../../BLL/FilterWord";
 import style from "./InputForm.module.css";
-import { pervSklonA, pervSklonIya, pervSklonKa, pervSklonYa } from "../../BLL/PervSklon";
-import { tretSklon } from "../../BLL/TretSklon";
-import { vtorSklon, vtorSklonE, vtorSklonO, vtorSklonOk, vtorSklonYi } from "../../BLL/VtorSklon";
 
 type Props = {
 	setResult: Dispatch<SetStateAction<string>>;
@@ -12,53 +10,9 @@ type Error = {
 	text?: string;
 };
 const InputForm: FC<Props> = ({ setResult }) => {
-	type Values = {
-		text: string;
-		wordCase: string;
+	const handleWordSubmit = (values: Values) => {
+		setResult(setCase(values));
 	};
-	const setCase = (props: Values) => {
-		let resWord = props.text;
-		let word = "";
-		let lastLetter = resWord.slice(-1);
-		switch (resWord.slice(-2)) {
-			case "ка":
-				word = pervSklonKa(resWord, props.wordCase);
-				return setResult(word);
-			case "ок":
-				word = vtorSklonOk(resWord, props.wordCase);
-				return setResult(word);
-			case "ия":
-				word = pervSklonIya(resWord, props.wordCase);
-				return setResult(word);
-			default:
-				break;
-		}
-		switch (lastLetter) {
-			case "а":
-				word = pervSklonA(resWord, props.wordCase);
-				return setResult(word);
-			case "я":
-				word = pervSklonYa(resWord, props.wordCase);
-				return setResult(word);
-			case "о":
-				word = vtorSklonO(resWord, props.wordCase);
-				return setResult(word);
-			case "е":
-			case "ё":
-				word = vtorSklonE(resWord, props.wordCase);
-				return setResult(word);
-			case "й":
-				word = vtorSklonYi(resWord, props.wordCase);
-				return setResult(word);
-			case "ь":
-				word = tretSklon(resWord, props.wordCase);
-				return setResult(word);
-			default:
-				word = vtorSklon(resWord, props.wordCase);
-				return setResult(word);
-		}
-	};
-
 	return (
 		<div className={style.wrapper}>
 			<div>
@@ -67,7 +21,7 @@ const InputForm: FC<Props> = ({ setResult }) => {
 					initialValues={{ text: "", wordCase: "0" }}
 					validate={(values) => {
 						const errors: Error = {};
-						if (values.text.length < 3) {
+						if (values.text.length <= 3) {
 							errors.text = "Слово не может состоять меньше чем из 3-х букв";
 						}
 						let endValue = values.text.match(/^[а-яА-я]*/);
@@ -76,7 +30,7 @@ const InputForm: FC<Props> = ({ setResult }) => {
 						return errors;
 					}}
 					onSubmit={(values: Values, { setSubmitting }) => {
-						setCase(values);
+						handleWordSubmit(values);
 						setSubmitting(false);
 					}}
 				>
