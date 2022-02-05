@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/GNIVZ/static/css/main.bd4b45a5.css",
-    "main.js": "/GNIVZ/static/js/main.1c8ea997.js",
+    "main.js": "/GNIVZ/static/js/main.5b835f03.js",
     "index.html": "/GNIVZ/index.html",
     "main.bd4b45a5.css.map": "/GNIVZ/static/css/main.bd4b45a5.css.map",
-    "main.1c8ea997.js.map": "/GNIVZ/static/js/main.1c8ea997.js.map"
+    "main.5b835f03.js.map": "/GNIVZ/static/js/main.5b835f03.js.map"
   },
   "entrypoints": [
     "static/css/main.bd4b45a5.css",
-    "static/js/main.1c8ea997.js"
+    "static/js/main.5b835f03.js"
   ]
 }
