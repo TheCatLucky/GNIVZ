@@ -14,17 +14,17 @@ const InputForm: FC<Props> = ({ setResult }) => {
 		setResult(setCase(values));
 	};
 	return (
-		<div className={style.wrapper}>
+		<div>
 			<div>
 				<h2 className={style.h2}>Склонение слова</h2>
 				<Formik
 					initialValues={{ text: "", wordCase: "0" }}
 					validate={(values) => {
 						const errors: Error = {};
-						if (values.text.length <= 3) {
+						if (values.text.length < 3) {
 							errors.text = "Слово не может состоять меньше чем из 3-х букв";
 						}
-						let endValue = values.text.match(/^[а-яА-я]*/);
+						let endValue = values.text.match(/^[а-яА-яёЁ]*/);
 						//@ts-ignore
 						values.text = endValue[0] || "";
 						return errors;
